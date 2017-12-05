@@ -22,8 +22,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiamVubmluZ3NhbmRlcnNvbiIsImEiOiIzMHZndnpvIn0.P
 
 var map = new mapboxgl.Map({
     container: 'map',
-    zoom: 9,
-    center: [137.9150899566626, 36.25956997955441],
+    zoom: 10,
+    center: [-112.7809, 47.1444],
     style: 'mapbox://styles/mapbox/satellite-streets-v9',
     hash: true
 });
@@ -37,7 +37,7 @@ map.once('load',function(){
     'type': "fill-extrusion",
     'source': {
       'type': "geojson",
-      'data': "3d_tracks_wakina.geojson"
+      'data': "data/huck_yurt.geojson"
     },
     'paint': {
       'fill-extrusion-color': {
@@ -57,19 +57,6 @@ map.once('load',function(){
   })
 })
 
-
-
-
-//
-// L.mapbox.accessToken = 'pk.eyJ1IjoiamVubmluZ3NhbmRlcnNvbiIsImEiOiIzMHZndnpvIn0.PS-j7fRK3HGU7IE8rbLT9A';
-//
-//
-// var map = L.mapbox.map('map', 'mapbox.streets')
-//     .setView([0, 0], 9);
-//
-// var layer = L.mapbox.tileLayer('jenningsanderson.4212xm80')
-//
-// layer.addTo(map)
 
 </script>
 
