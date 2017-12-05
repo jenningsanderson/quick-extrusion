@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
+
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiamVubmluZ3NhbmRlcnNvbiIsImEiOiIzMHZndnpvIn0.PS-j7fRK3HGU7IE8rbLT9A';
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    zoom: 9,
+    center: [137.9150899566626, 36.25956997955441],
+    style: 'mapbox://styles/mapbox/satellite-streets-v9',
+    hash: true
+});
+
+map.once('load',function(){
+  // map.showTileBoundaries = true
+  console.log(map.showTileBoundaries)
+
+  map.addLayer({
+    'id': "tracks",
+    'type': "fill-extrusion",
+    'source': {
+      'type': "geojson",
+      'data': "3d_tracks_wakina.geojson"
+    },
+    'paint': {
+      'fill-extrusion-color': {
+        'property':'color',
+        'type': 'identity'
+      },
+      'fill-extrusion-opacity': 0.8,
+      'fill-extrusion-base': {
+          'property': 'zero',
+          'type': 'identity'
+      },
+      'fill-extrusion-height': {
+        'property': 'height',
+        'type': 'identity'
+      }
+    }
+  })
+})
+
+
+
+
+//
+// L.mapbox.accessToken = 'pk.eyJ1IjoiamVubmluZ3NhbmRlcnNvbiIsImEiOiIzMHZndnpvIn0.PS-j7fRK3HGU7IE8rbLT9A';
+//
+//
+// var map = L.mapbox.map('map', 'mapbox.streets')
+//     .setView([0, 0], 9);
+//
+// var layer = L.mapbox.tileLayer('jenningsanderson.4212xm80')
+//
+// layer.addTo(map)
+
+</script>
+
+</body>
+</html>
